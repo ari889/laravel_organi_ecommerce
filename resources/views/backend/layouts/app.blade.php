@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="backend/assets/css/dark-theme.css" />
     <link rel="stylesheet" href="backend/assets/css/semi-dark.css" />
     <link rel="stylesheet" href="backend/assets/css/header-colors.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>{{ env('APP_NAME') }} - {{ $page_title }}</title>
     @livewireStyles
 
@@ -73,6 +74,8 @@
     <script src="backend/assets/plugins/jquery-knob/excanvas.js"></script>
     <script src="backend/assets/plugins/jquery-knob/jquery.knob.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tiny.cloud/1/xz6x9xqkgx3tatz9yh8d156k8cbrzyma87e3b159hpeinwta/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(function () {
             $(".knob").knob();

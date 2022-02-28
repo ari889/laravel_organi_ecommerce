@@ -14,7 +14,7 @@ class AddUtypeToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('utype', ['SUPADM', 'ADM', 'MOD', 'USR'])->after('profile_photo_path');
+            $table->enum('utype', ['SUPADM', 'ADM', 'MOD', 'USR'])->default('USR')->after('profile_photo_path');
         });
     }
 

@@ -1,5 +1,6 @@
 @php
     $settings = new \App\Models\Settings();
+    $categories = \App\Models\Category::all();
 @endphp
 <header class="header">
     <div class="header__top">
@@ -30,9 +31,24 @@
                                 <li><a href="#">English</a></li>
                             </ul>
                         </div>
-                        <div class="header__top__right__auth">
-                            <a href="#"><i class="fa fa-user"></i> Login</a>
+                        @if(!Auth::check())
+                            <div class="header__top__right__auth">
+                                <a href="{{ route('login') }}"><i class="fa fa-user"></i> Login</a>
+                            </div>
+                        @else
+                        <div class="header__top__right__language">
+                            <div>{{ Auth::user()->name }}</div>
+                            <span class="arrow_carrot-down"></span>
+                            <ul>
+                                <li><a href="@if(Auth::user()->utype == 'SUPADM') {{ route('admin.dashboard') }} @else {{ route('user.dashboard') }} @endif">Dashboard</a></li>
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#" onclick="document.getElementById('logout-form').submit()">Logout</a></li>
+                            </ul>
                         </div>
+                        <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                        @csrf
+                        </form>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -58,10 +74,10 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li><a href="{{ route('favorite') }}"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                        <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        @livewire('frontend.wishlist.wishlist-count-component')
+                        @livewire('frontend.cart.cart-count-component')
                     </ul>
-                    <div class="header__cart__price">item: <span>$150.00</span></div>
+                    <div class="header__cart__price">item: <span>${{ Cart::instance('cart')->total() }}</span></div>
                 </div>
             </div>
         </div>
@@ -82,32 +98,15 @@
                         <span>All departments</span>
                     </div>
                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
+                        @foreach ($categories as $category)
+                            <li class="position-relative"><a href="{{ route('category', ['slug' => $category->slug]) }}">{{ $category->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-lg-9">
                 <div class="hero__search">
-                    <div class="hero__search__form">
-                        <form action="#">
-                            <div class="hero__search__categories">
-                                All Categories
-                                <span class="arrow_carrot-down"></span>
-                            </div>
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
-                        </form>
-                    </div>
+                    @livewire('frontend.search.header-search-component')
                     <div class="hero__search__phone">
                         <div class="hero__search__phone__icon">
                             <i class="fa fa-phone"></i>

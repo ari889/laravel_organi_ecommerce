@@ -1,4 +1,40 @@
-<x-guest-layout>
+{{-- @extends('frontend.layouts.app', ['page_title' => 'Login'])
+<style>
+    .custom-mid{
+        max-width: 500px;
+        margin: 50px auto;
+    }
+</style>
+<div class="custom-mid">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="mb-3">Login</h3>
+            <form action="{{ route('login') }}" method="POST">
+                @csrf
+                <div class="mb-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Please enter valid email">
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password">
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                <button type="submit" class="site-btn">Login</button>
+            </form>
+        </div>
+    </div>
+</div> --}}
+{{-- <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -45,4 +81,4 @@
             </div>
         </form>
     </x-jet-authentication-card>
-</x-guest-layout>
+</x-guest-layout> --}}

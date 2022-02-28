@@ -56,10 +56,11 @@
     <script src="frontend/js/jquery.slicknav.js"></script>
     <script src="frontend/js/mixitup.min.js"></script>
     <script src="frontend/js/owl.carousel.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="frontend/js/main.js"></script>
 
-    @livewireScripts
     @stack('scripts')
+    @livewireScripts
 
 
 
